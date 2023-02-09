@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getListUsers } from '../services/localstorage';
-import { UserItem } from './UserItem'
+
 
 export const UserList = () => {
     const [users, setUsers] = useState([]);
