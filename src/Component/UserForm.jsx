@@ -26,7 +26,7 @@ export const UserForm = () => {
        resetForm();
        setTimeout(() => {
         setShowAlert(false);
-    }, 1000);
+    }, 2000);
         // console.log(inputValues);
     }
     return (

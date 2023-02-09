@@ -14,3 +14,4 @@ export const addUser = (user)=>{
     users.push({id: uuid(),...user});
     localStorage["@users"] = JSON.stringify(users);
 }
+
