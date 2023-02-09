@@ -1,10 +1,26 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import * as Icon from 'react-bootstrap-icons';
+import { useForm } from '../hooks/useForm';
 
 export const UserForm = () => {
     const nagivate = useNavigate();
-   
+    const { inputValues, handleInputChange, resetForm } = useForm({
+        name: '',
+        email: '',
+        phone: '',
+        dob: '',
+        city: '',
+        district: '',
+        province: '',
+        Country: 'Nepal'
+    }
+    )
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(inputValues);
+    }
     return (
         <div className='container'>
             <div className='d-flex my-5 justify-content-between'>
@@ -13,16 +29,18 @@ export const UserForm = () => {
                 <h6>. </h6>
             </div>
             <div className="card border-primary p-5 m-5">
-                <form >
+                <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label className="form-label mt-2" htmlFor="inputValid">Name</label>
 
                         <input
+                            id="name"
                             name="name"
                             type="text"
+                            value={inputValues.name}
+                            onChange={handleInputChange}
                             className="form-control"
                             placeholder=' Enter full Name'
-                            id="inputValid"
                             required
                         />
                     </div>
@@ -31,11 +49,13 @@ export const UserForm = () => {
                     <div className="form-group">
                         <label className="form-label mt-2" htmlFor="inputValid">Email</label>
                         <input
+                            id="email"
                             name="email"
                             type="email"
+                            value={inputValues.email}
+                            onChange={handleInputChange}
                             placeholder='xyz@gmail.com'
                             className="form-control"
-                            id="inputValid"
                             required
                         />
                     </div>
@@ -47,10 +67,12 @@ export const UserForm = () => {
                         <div className="form-group col">
                             <label className="form-label mt-2" htmlFor="inputValid">Phone</label>
                             <input
+                                id="phone"
                                 name="phone"
                                 type="text"
+                                value={inputValues.phone}
+                                onChange={handleInputChange}
                                 className="form-control"
-                                id="inputValid"
                                 placeholder='+977'
                                 required
                             />
@@ -58,10 +80,12 @@ export const UserForm = () => {
                         <div className="form-group col">
                             <label className="form-label mt-2" htmlFor="inputValid">Dob</label>
                             <input
+                                id="dob"
                                 name="dob"
                                 type="date"
+                                value={inputValues.dob}
+                                onChange={handleInputChange}
                                 className="form-control"
-                                id="inputValid"
                                 required
                             />
                         </div>
@@ -72,26 +96,31 @@ export const UserForm = () => {
                         <div className='form-group row'>
                             <div className='form-group col'>
                                 <input
+                                    id="city"
                                     type="text"
-                                    name="address"
+                                    name="city"
+                                    value={inputValues.city}
+                                onChange={handleInputChange}
                                     className="form-control"
                                     placeholder='City'
-                                    id="inputValid"
                                     required
                                 />
                             </div>
                             <div className='form-group col'>
                                 <input
+                                    id="district"
                                     type="text"
-                                    name="address"
+                                    name="district"
+                                    value={inputValues.district}
+                                onChange={handleInputChange}
                                     className="form-control"
                                     placeholder='District'
-                                    id="inputValid"
                                     required
                                 />
                             </div>
                             <div className='form-group col'>
-                                <select id="inputState" class="form-control" name="province">
+                                <select id="province" value={inputValues.province}
+                                    onChange={handleInputChange} class="form-control" name="province" >
                                     <option selected>Choose province...</option>
                                     <option>Bagmati Province</option>
                                     <option>Gandaki Province</option>
@@ -103,12 +132,12 @@ export const UserForm = () => {
                                 </select>
                             </div><div className='form-group col'>
                                 <input
+                                    id="country"
                                     type="text"
-                                    name="Country"
+                                    name="country"
                                     className="form-control"
                                     placeholder='Country'
                                     value="Nepal"
-                                    id="inputValid"
                                 />
                             </div>
                         </div>
@@ -120,7 +149,7 @@ export const UserForm = () => {
                 </form>
             </div>
 
-            
+
         </div>
     )
 }
