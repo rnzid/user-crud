@@ -1,4 +1,5 @@
 import React from 'react'
+import { UserItem } from './UserItem'
 
 export const UserList = () => {
   return (
@@ -17,7 +18,7 @@ export const UserList = () => {
     </tr>
 </thead>
 <tbody>
-    <tr></tr>
+    <UserItem/>
 </tbody>
 </table>
         </div>
