@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate,useParams } from 'react-router-dom'
 import { useForm } from '../hooks/useForm';
 import { addUser, editUser, getUserById } from '../services/localstorage';
-import { FaHeart } from "react-icons/fa";
+import { FaRegUser,FaArrowLeft,FaUserEdit,FaPhone,FaAt,FaMapMarkerAlt ,FaCalendarCheck} from 'react-icons/fa';
 
 export const UserForm = () => {
 
@@ -43,7 +43,7 @@ const [showAlert, setShowAlert] = useState(false);
     return (
         <div className='container'>
             <div className='d-flex my-5 justify-content-between'>
-                <button className='btn btn-outline-secondary' onClick={() => { nagivate("/") }}> Back</button>
+                <button className='btn btn-outline-secondary' onClick={() => { nagivate("/") }}><FaArrowLeft/> Back</button>
                 <h1>{id? "Edit" : "Create"} User</h1>
                 <h6>. </h6>
             </div>
@@ -60,7 +60,8 @@ const [showAlert, setShowAlert] = useState(false);
             <div className="card border-primary p-5 m-5">
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label className="form-label mt-2" htmlFor="inputValid">Name</label>
+                    <FaUserEdit/>
+                        <label className="form-label mt-2 mx-2" htmlFor="inputValid">Name</label>
 
                         <input
                             id="name"
@@ -76,7 +77,8 @@ const [showAlert, setShowAlert] = useState(false);
 
 
                     <div className="form-group">
-                        <label className="form-label mt-2" htmlFor="inputValid">Email</label>
+                        <FaAt/>
+                        <label className="form-label mt-2 mx-2" htmlFor="inputValid">Email</label>
                         <input
                             id="email"
                             name="email"
@@ -94,7 +96,8 @@ const [showAlert, setShowAlert] = useState(false);
                     <div className='form-group row'>
 
                         <div className="form-group col">
-                            <label className="form-label mt-2" htmlFor="inputValid">Phone</label>
+                        <FaPhone/>
+                            <label className="form-label mt-2 mx-2" htmlFor="inputValid">Phone</label>
                             <input
                                 id="phone"
                                 name="phone"
@@ -107,7 +110,8 @@ const [showAlert, setShowAlert] = useState(false);
                             />
                         </div>
                         <div className="form-group col">
-                            <label className="form-label mt-2" htmlFor="inputValid">Dob</label>
+                            <FaCalendarCheck/>
+                            <label className="form-label mt-2 mx-2" htmlFor="inputValid">Dob</label>
                             <input
                                 id="dob"
                                 name="dob"
@@ -121,7 +125,8 @@ const [showAlert, setShowAlert] = useState(false);
                     </div>
 
                     <div className="form-group">
-                        <label className="form-label mt-2" htmlFor="inputValid">Address</label>
+                        <FaMapMarkerAlt/>
+                        <label className="form-label mt-2 mx-2" htmlFor="inputValid">Address</label>
                         <div className='form-group row'>
                             <div className='form-group col'>
                                 <input
@@ -173,7 +178,7 @@ const [showAlert, setShowAlert] = useState(false);
                     </div>
                     <br />
                     <div className="d-grid gap-2 mt-3">
-                        <button  type="submit" className="btn btn-outline-primary btn-block">  {id ? "Edit" : "Add"}  User</button>
+                        <button  type="submit" className="btn btn-outline-primary btn-block"> <FaRegUser/> {id ?  "Edit" :  "Add"}  User</button>
                     </div>
                 </form>
             </div>

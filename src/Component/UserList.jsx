@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { getListUsers , deleteUser } from '../services/localstorage';
 import { useNavigate } from 'react-router-dom';
 
+import { FaRegTrashAlt } from 'react-icons/fa';
+
 
 export const UserList = () => {
     const [users, setUsers] = useState([]);
@@ -53,6 +55,7 @@ const removeUser=(id)=>{
                                             <span role="button" className='badge bg-danger' onClick={() => removeUser(item.id)} >
                                             
                                                 Delete
+                                                <FaRegTrashAlt/>
                                             </span>
                                         </div>
                                     </td>
