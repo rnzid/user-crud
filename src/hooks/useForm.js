@@ -14,9 +14,16 @@ const handleInputChange = ({target})=>{
         [target.name]:target.value
     });
 }
+
+const setForm = (newValues) => {
+setinputValues(newValues); 
+}
+
+
 return{
     inputValues,
     handleInputChange,
-    resetForm
+    resetForm,
+    setForm
 }
 }

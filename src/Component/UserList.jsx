@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react'
 import { getListUsers } from '../services/localstorage';
+import { useNavigate } from 'react-router-dom';
 
 
 export const UserList = () => {
     const [users, setUsers] = useState([]);
-
+const navigate = useNavigate()
     useEffect(() => {
         setUsers(getListUsers())
     }, []);
     console.log("users", users)
     const userinfo = JSON.parse(localStorage.getItem("@users"));
+
+const deleteUser=()=>{
+
+}
+
 
     return (
         <div className='Container'>
@@ -38,10 +44,10 @@ export const UserList = () => {
                                     <td>{item.Country}</td>
                                     <td>
                                         <div className='d-flex gap-3'>
-                                            <span role="button" className='badge bg-success' /* onClick={() => navigate(`/edit-user`)} */>
+                                            <span role="button" className='badge bg-success'  onClick={() => navigate(`/edit-user/${item.id}`)}>
                                                 Edit
                                             </span>
-                                            <span role="button" className='badge bg-danger' /* onClick={() => deleteUser()} */>
+                                            <span role="button" className='badge bg-danger' onClick={() => deleteUser()} >
                                                 Delete
                                             </span>
                                         </div>

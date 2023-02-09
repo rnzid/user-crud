@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate,useParams } from 'react-router-dom'
 import { useForm } from '../hooks/useForm';
-import { addUser } from '../services/localstorage';
+import { addUser, editUser, getUserById } from '../services/localstorage';
 
 export const UserForm = () => {
-    const nagivate = useNavigate();
-    const [showAlert, setShowAlert] = useState(false);
-    const { inputValues, handleInputChange, resetForm } = useForm({
+
+    
+const nagivate = useNavigate();
+const {id} = useParams();
+const [showAlert, setShowAlert] = useState(false);
+    const { inputValues, handleInputChange, resetForm,setForm } = useForm({
         name: '',
         email: '',
         phone: '',
@@ -19,9 +22,16 @@ export const UserForm = () => {
     )
 
 
+    useEffect(()=> {
+        if(id){
+            const user = getUserById(id);
+            setForm(user);
+        }
+    },[id]);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-       addUser(inputValues);
+       id? editUser(id, inputValues) : addUser(inputValues);
        setShowAlert(true);
        resetForm();
        setTimeout(() => {
@@ -33,7 +43,7 @@ export const UserForm = () => {
         <div className='container'>
             <div className='d-flex my-5 justify-content-between'>
                 <button className='btn btn-outline-secondary' onClick={() => { nagivate("/") }}>Back</button>
-                <h1>Add User</h1>
+                <h1>{id? "Edit" : "Create"} User</h1>
                 <h6>. </h6>
             </div>
 
