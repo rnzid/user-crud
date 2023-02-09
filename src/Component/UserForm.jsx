@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from '../hooks/useForm';
+import { addUser } from '../services/localstorage';
 
 export const UserForm = () => {
     const nagivate = useNavigate();
+    const [showAlert, setShowAlert] = useState(false);
     const { inputValues, handleInputChange, resetForm } = useForm({
         name: '',
         email: '',
@@ -19,7 +21,13 @@ export const UserForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(inputValues);
+       addUser(inputValues);
+       setShowAlert(true);
+       resetForm();
+       setTimeout(() => {
+        setShowAlert(false);
+    }, 1000);
+        // console.log(inputValues);
     }
     return (
         <div className='container'>
@@ -28,6 +36,16 @@ export const UserForm = () => {
                 <h1>Add User</h1>
                 <h6>. </h6>
             </div>
+
+            {
+                showAlert && (
+                    <div className='px-5'>
+                        <div className='alert alert-success'>
+                            <strong>Well done!</strong> {/* {id ? "edit" : "added a new"} */} User.
+                        </div>
+                    </div>
+                )
+            }
             <div className="card border-primary p-5 m-5">
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -149,7 +167,7 @@ export const UserForm = () => {
                 </form>
             </div>
 
-
+           
         </div>
     )
 }
