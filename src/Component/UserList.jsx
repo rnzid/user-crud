@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getListUsers } from '../services/localstorage';
+import { getListUsers , deleteUser } from '../services/localstorage';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -12,8 +12,10 @@ const navigate = useNavigate()
     console.log("users", users)
     const userinfo = JSON.parse(localStorage.getItem("@users"));
 
-const deleteUser=()=>{
-
+const removeUser=(id)=>{
+ deleteUser(id);
+ setUsers(getListUsers())
+ 
 }
 
 
@@ -47,7 +49,7 @@ const deleteUser=()=>{
                                             <span role="button" className='badge bg-success'  onClick={() => navigate(`/edit-user/${item.id}`)}>
                                                 Edit
                                             </span>
-                                            <span role="button" className='badge bg-danger' onClick={() => deleteUser()} >
+                                            <span role="button" className='badge bg-danger' onClick={() => removeUser(item.id)} >
                                                 Delete
                                             </span>
                                         </div>

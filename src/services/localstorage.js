@@ -29,5 +29,9 @@ export const editUser = (id, newUser) => {
     localStorage["@users"] = JSON.stringify(users);
   };
 
- 
+  export const deleteUser = (id) => {
+    let users = getListUsers();
+    users = users.filter((user) => user.id !== id);
+    localStorage["@users"] = JSON.stringify(users);
+  };
   

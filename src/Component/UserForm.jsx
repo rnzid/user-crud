@@ -51,7 +51,7 @@ const [showAlert, setShowAlert] = useState(false);
                 showAlert && (
                     <div className='px-5'>
                         <div className='alert alert-success'>
-                            <strong>Well done!</strong> {/* {id ? "edit" : "added a new"} */} User.
+                            <strong>Well done!</strong> {id ? "edit" : "added a new"}  User.
                         </div>
                     </div>
                 )
@@ -172,7 +172,7 @@ const [showAlert, setShowAlert] = useState(false);
                     </div>
                     <br />
                     <div className="d-grid gap-2 mt-3">
-                        <button type="submit" className="btn btn-outline-primary btn-block">{/* {id ? "Edit" : "Add"} */} User</button>
+                        <button type="submit" className="btn btn-outline-primary btn-block"> {id ? "Edit" : "Add"}  User</button>
                     </div>
                 </form>
             </div>
