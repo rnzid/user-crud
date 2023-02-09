@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate,useParams } from 'react-router-dom'
 import { useForm } from '../hooks/useForm';
 import { addUser, editUser, getUserById } from '../services/localstorage';
+import { FaHeart } from "react-icons/fa";
 
 export const UserForm = () => {
 
@@ -42,7 +43,7 @@ const [showAlert, setShowAlert] = useState(false);
     return (
         <div className='container'>
             <div className='d-flex my-5 justify-content-between'>
-                <button className='btn btn-outline-secondary' onClick={() => { nagivate("/") }}>Back</button>
+                <button className='btn btn-outline-secondary' onClick={() => { nagivate("/") }}> Back</button>
                 <h1>{id? "Edit" : "Create"} User</h1>
                 <h6>. </h6>
             </div>
@@ -172,12 +173,12 @@ const [showAlert, setShowAlert] = useState(false);
                     </div>
                     <br />
                     <div className="d-grid gap-2 mt-3">
-                        <button type="submit" className="btn btn-outline-primary btn-block"> {id ? "Edit" : "Add"}  User</button>
+                        <button  type="submit" className="btn btn-outline-primary btn-block">  {id ? "Edit" : "Add"}  User</button>
                     </div>
                 </form>
             </div>
 
-           
+           <div>aaas</div>
         </div>
     )
 }

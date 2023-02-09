@@ -49,7 +49,9 @@ const removeUser=(id)=>{
                                             <span role="button" className='badge bg-success'  onClick={() => navigate(`/edit-user/${item.id}`)}>
                                                 Edit
                                             </span>
+                                            
                                             <span role="button" className='badge bg-danger' onClick={() => removeUser(item.id)} >
+                                            
                                                 Delete
                                             </span>
                                         </div>
